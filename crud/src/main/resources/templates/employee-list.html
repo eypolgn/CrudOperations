@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Çalışan Listesi</title>
+</head>
+<body>
+<h1>Çalışan Listesi</h1>
+<table>
+    <tr>
+        <th>İsim</th>
+        <th>Rol</th>
+        <th>İşlemler</th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.name}">İsim</td>
+        <td th:text="${employee.role}">Rol</td>
+        <td>
+            <a th:href="@{'/employees/' + ${employee.id} + '/edit'}">Düzenle</a>
+            <form th:action="@{'/employees/' + ${employee.id}}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Sil</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a href="/employees/add">Yeni Çalışan Ekle</a>
+</body>
+</html>

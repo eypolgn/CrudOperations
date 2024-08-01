@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yeni Çalışan Ekle</title>
+</head>
+<body>
+<h1>Yeni Çalışan Ekle</h1>
+<form th:action="@{/employees/add}" th:object="${employeeDTO}" method="post">
+    <div>
+        <label for="name">İsim:</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">İsim hatası</p>
+    </div>
+    <div>
+        <label for="role">Rol:</label>
+        <input type="text" id="role" th:field="*{role}" />
+        <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Rol hatası</p>
+    </div>
+    <div>
+        <button type="submit">Kaydet</button>
+    </div>
+</form>
+<a th:href="@{/employees}">Geri Dön</a>
+</body>
+</html>

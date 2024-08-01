@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Çalışan Düzenle</title>
+</head>
+<body>
+<h1>Çalışan Düzenle</h1>
+<form th:action="@{/employees/{id}(id=${employeeId})}" th:object="${employeeDTO}" method="post">
+    <div>
+        <label for="name">İsim:</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">İsim hatası</p>
+    </div>
+    <div>
+        <label for="role">Rol:</label>
+        <input type="text" id="role" th:field="*{role}" />
+        <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Rol hatası</p>
+    </div>
+    <div>
+        <input type="hidden" name="_method" value="put"/>
+        <button type="submit">Kaydet</button>
+    </div>
+</form>
+<a th:href="@{/employees}">Geri Dön</a>
+</body>
+</html>

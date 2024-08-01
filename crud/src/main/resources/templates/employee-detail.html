@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Çalışan Detayı</title>
+</head>
+<body>
+<h1>Çalışan Detayı</h1>
+<p>ID: <span th:text="${employee.id}"></span></p>
+<p>İsim: <span th:text="${employee.name}"></span></p>
+<p>Rol: <span th:text="${employee.role}"></span></p>
+<a th:href="@{/employees}">Geri Dön</a>
+</body>
+</html>
